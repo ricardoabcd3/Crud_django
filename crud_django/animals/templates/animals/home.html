@@ -1,0 +1,46 @@
+{% load static %}
+<link rel="stylesheet" href="{% static '../../static/bootstrap.min.css' %}">
+
+{% if animals %}
+<div class='container'>
+<a href="{% url 'aplication:create' %}" class ='btn btn-outline-dark mt-5'>Crear Nuevo</a>
+<table class="table table-bodered table-info mt-5 text-center">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">color</th>
+        <th scope="col">extincion status</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for  animal in animals%}
+      <tr>
+        <th>{{animal.id}}</th>
+        <td>{{animal.name}}</td>
+        <td>{{animal.color}}</td>
+        <td>{{animal.species}}</td>         
+        <td>{{animal.extintion_warming}}</td>
+        <td>
+            <a href="{% url 'aplication:detail' animal.id %}" class="btn btn-danger m1-1">Ver mas</a>
+            <a href="{% url 'aplication:edit' animal.id %}" class="btn btn-succes m1-1">Editar</a>
+            <a href="{% url 'aplication:delete' animal.id %}" class="btn btn-primary m1-1">Eliminar</a>
+
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>  
+        
+           
+            
+            
+            
+        
+    
+{% else %}
+    <p>No data avalilable</p>
+
+{% endif %}
+
