@@ -1,0 +1,19 @@
+<h1>History</h1>
+{% comment %} maybe when you use only the name of the path without application: only works on older version of django {% endcomment %}
+<a href="{%url 'application:taskList'%}">Go back </a>
+
+<table>
+    <tr>
+        <th>Task</th>
+        <th>Date</th>
+    </tr>
+    {% for task in history %}
+    <tr>
+        <td>{{task.title}}</td>
+        <td>{{task.created}}</td>
+        <td><a href="{%url 'application:delete' task.id %}">Delete</a></td>
+    </tr>
+    {%empty%}
+        <h3>No items in list</h3>
+    {% endfor %}
+</table>

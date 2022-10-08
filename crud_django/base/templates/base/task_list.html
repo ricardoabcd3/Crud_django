@@ -1,0 +1,25 @@
+{%if request.user.is_authenticated %}
+<p>{{request.user}}</p>
+<a href="">Log out</a>
+{% else %}
+<a href="{% url 'application:login' %}">Login</a>
+{% endif %}
+<hr>
+<h1>My to do list(pendientes)</h1>
+{% comment %} maybe when you use only the name of the path without application: only works on older version of django {% endcomment %}
+<a href="{% url 'application:create' %}">Add task</a>
+<a href="{%url 'application:history'%}">History</a>
+<table>
+    <tr>
+        <th>Task</th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td>{{task.title}}</td>
+        <td><a href="{%url 'application:detail' task.id%}">view</a></td>
+        <td><a href="{%url 'application:update' task.id %}">Update</a></td>
+    </tr>
+    {%empty%}
+        <h3>No items in list</h3>
+    {% endfor %}
+</table>
