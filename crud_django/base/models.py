@@ -14,5 +14,6 @@ class Task(models.Model):
     def __str__(self):
         return self.title
     class Meta:
+        #need to study this comand
         ordering=['complete']
          

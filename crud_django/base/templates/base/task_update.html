@@ -1,4 +1,7 @@
+<h1>Update</h1>
+
+<a href="{%url 'application:taskList'%}">Go back </a>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Delete">
+    <input type="submit" value="Update">
 </form>

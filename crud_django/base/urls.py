@@ -12,7 +12,8 @@ urlpatterns = [
     path('task/history/',views.TaskHistory.as_view(),name='history'),
     path('task/delete/<int:pk>/',views.TaskDelete.as_view(),name="delete"),
     path('task/login/',views.TaskLogin.as_view(),name='login'),
-    path('task/logout/',LogoutView.as_view(next_page='application:login'),name='logout')
+    path('task/logout/',LogoutView.as_view(next_page='application:login'),name='logout'),
+    path('task/register/',views.TaskRegister.as_view(),name='register'),
     
     
    

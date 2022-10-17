@@ -1,7 +1,11 @@
 <h1>History</h1>
 {% comment %} maybe when you use only the name of the path without application: only works on older version of django {% endcomment %}
 <a href="{%url 'application:taskList'%}">Go back </a>
-
+{% if history %}
+<form accion="{% url 'application:taskList' %}" method='get'>
+    <input type="text" name='search_area'placeholder='Search...'>
+    
+</form>
 <table>
     <tr>
         <th>Task</th>
@@ -12,8 +16,12 @@
         <td>{{task.title}}</td>
         <td>{{task.created}}</td>
         <td><a href="{%url 'application:delete' task.id %}">Delete</a></td>
+        <td><a href="{%url 'application:detail' task.id %}">Detail</a></td>
     </tr>
-    {%empty%}
-        <h3>No items in list</h3>
+    
+        
     {% endfor %}
 </table>
+{% else %}
+<h3>No haven't had completed tasks yet</h3>
+{% endif %}

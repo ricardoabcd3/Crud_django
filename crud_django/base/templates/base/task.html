@@ -1,3 +1,12 @@
-<h1>task:{{task}}</h1>
+<a href="{%url 'application:taskList'%}">Go back </a>
+<h1>Detail</h1>
+<p>task=  {{task}}</p>
+<p>desciption</p>
+{% if task.description %}
+<p>{{task.description}}</p>
+{% else %}
+<p>No description</p>
+{% endif %}
 
-{{task.complete}}
+<p>Status= {{task.complete}}</p>
+
